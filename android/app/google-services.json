@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "630000121371",
+    "project_id": "mini-course-fd039",
+    "storage_bucket": "mini-course-fd039.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630000121371:android:8d338777697cfbcd96eabe",
+        "android_client_info": {
+          "package_name": "com.example.mini_course"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD012Ye6kKmMn6vYSkQuZSxQztEkSM1Ah8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630000121371:android:c813541b883d41d196eabe",
+        "android_client_info": {
+          "package_name": "mini.courses.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD012Ye6kKmMn6vYSkQuZSxQztEkSM1Ah8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
