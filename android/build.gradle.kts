@@ -1,44 +1,15 @@
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.gms.google-services")
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory)
 }
 
-android {
-    namespace = "com.example.mini_course"
+val newBuildDir = rootProject.layout.buildDirectory.dir("../../build").get()
+rootProject.layout.buildDirectory.value(newBuildDir)
 
-    compileSdk = 34
-
-    defaultConfig {
-        applicationId = "com.example.mini_course"
-        minSdk = 21
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+subprojects {
+    val newSubprojectBuildDir = newBuildDir.dir(name)
+    layout.buildDirectory.value(newSubprojectBuildDir)
 }
 
-dependencies {
-    // Firebase BOM міндетті емес, бірақ жақсы практика.
-    // implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-    // implementation("com.google.firebase:firebase-auth")
+subprojects {
+    evaluationDependsOn(":app")
 }

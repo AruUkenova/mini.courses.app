@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../controllers/login_controller.dart';
+import '../presenters/login_presenter.dart';
 import 'register_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -22,8 +22,8 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    final c = context.watch<LoginController>();
-    final vm = c.vm;
+    final c = context.watch<LoginPresenter>();
+    
 
     return Scaffold(
       appBar: AppBar(title: const Text("Login")),
@@ -31,13 +31,13 @@ class _LoginViewState extends State<LoginView> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            if (vm.error != null)
+            if (c.error != null)
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(12),
                 margin: const EdgeInsets.only(bottom: 12),
-                color: Colors.red.withOpacity(0.1),
-                child: Text(vm.error!, style: const TextStyle(color: Colors.red)),
+                color: Colors.red.withValues(alpha:0.1),
+                child: Text(c.error!, style: const TextStyle(color: Colors.red)),
               ),
             TextField(controller: emailC, decoration: const InputDecoration(labelText: "Email")),
             const SizedBox(height: 12),
@@ -50,10 +50,10 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: vm.loading
+                onPressed: c.isLoading
                     ? null
                     : () => c.login(emailC.text.trim(), passC.text.trim()),
-                child: vm.loading
+                child: c.isLoading
                     ? const SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 2))
                     : const Text("Sign in"),
               ),
